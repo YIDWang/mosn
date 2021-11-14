@@ -15,8 +15,30 @@
  * limitations under the License.
  */
 
-package transcoder
+package simplematcher
 
-import "mosn.io/api"
+import (
+	"context"
+	"mosn.io/mosn/pkg/filter/stream/transcoder/matcher"
+	"mosn.io/mosn/pkg/types"
+)
 
-const RequestTranscodeFail api.ResponseFlag = 0x2000
+const SimpleMatcherFactoryKey = "simpleMatcher"
+
+func init() {
+	matcher.RegisterMatcherFatcory(SimpleMatcherFactoryKey, SimpleMatcherFactory)
+}
+
+type SimpleRuleMatcher struct {
+	config interface{}
+}
+
+func (hrm *SimpleRuleMatcher) Matches(ctx context.Context, headers types.HeaderMap) bool {
+	return true
+}
+
+func SimpleMatcherFactory(config interface{}) matcher.RuleMatcher {
+	return &SimpleRuleMatcher{
+		config: config,
+	}
+}
