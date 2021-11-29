@@ -10,6 +10,8 @@ github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d h1:G0m3OIz70MZUW
 github.com/StackExchange/wmi v0.0.0-20190523213315-cbe66965904d/go.mod h1:3eOhrUMpNV+6aFIbp5/iudMxNCF27Vw2OZgy4xEx0Fg=
 github.com/TarsCloud/TarsGo v1.1.4 h1:h8Hch0oWX4hahh/ZWD2gVdKq5KbkbaE5PO2nQtq/hGI=
 github.com/TarsCloud/TarsGo v1.1.4/go.mod h1:jkslu43B0kZitq9ztCH6ZM6l4rCKGkMjdqEPjHoOdjc=
+github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222 h1:9y2qkr2ykzipMCUvS/OdscecVLra+ph+VxKv7+ymLts=
+github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222/go.mod h1:TBv4bz2f2RbpgdohbVAFRFVOoN8YyEUiLH3jAh752Qc=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
 github.com/alibaba/sentinel-golang v1.0.2-0.20210112133552-db6063eb263e h1:20g3Mjo5lhSoQEyQd/FS1Y3dQAOq7rm38sQi1KQHTQ8=
