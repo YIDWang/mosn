@@ -36,7 +36,7 @@ github.com/alibaba/sentinel-golang/core/system
 github.com/alibaba/sentinel-golang/core/system_metric
 github.com/alibaba/sentinel-golang/logging
 github.com/alibaba/sentinel-golang/util
-# github.com/andybalholm/brotli v1.0.0
+# github.com/andybalholm/brotli v1.0.2
 github.com/andybalholm/brotli
 # github.com/antlr/antlr4 v0.0.0-20200503195918-621b933c7a7f
 github.com/antlr/antlr4/runtime/Go/antlr
@@ -82,9 +82,9 @@ github.com/dchest/siphash
 github.com/dgrijalva/jwt-go
 # github.com/dubbogo/getty v1.3.4
 github.com/dubbogo/getty
-# github.com/dubbogo/go-zookeeper v1.0.0
+# github.com/dubbogo/go-zookeeper v1.0.3
 github.com/dubbogo/go-zookeeper/zk
-# github.com/dubbogo/gost v1.9.0
+# github.com/dubbogo/gost v1.11.16 => github.com/dubbogo/gost v1.9.0
 github.com/dubbogo/gost/bytes
 github.com/dubbogo/gost/container/set
 github.com/dubbogo/gost/context
@@ -163,7 +163,7 @@ github.com/gogo/protobuf/types
 # github.com/golang/mock v1.4.4
 ## explicit
 github.com/golang/mock/gomock
-# github.com/golang/protobuf v1.3.5
+# github.com/golang/protobuf v1.4.3
 ## explicit
 github.com/golang/protobuf/descriptor
 github.com/golang/protobuf/jsonpb
@@ -176,7 +176,7 @@ github.com/golang/protobuf/ptypes/empty
 github.com/golang/protobuf/ptypes/struct
 github.com/golang/protobuf/ptypes/timestamp
 github.com/golang/protobuf/ptypes/wrappers
-# github.com/golang/snappy v0.0.1
+# github.com/golang/snappy v0.0.3
 github.com/golang/snappy
 # github.com/google/cel-go v0.5.1
 ## explicit
@@ -211,19 +211,15 @@ github.com/hashicorp/go-plugin/internal/plugin
 github.com/hashicorp/go-syslog
 # github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb
 github.com/hashicorp/yamux
-# github.com/jinzhu/copier v0.0.0-20190924061706-b57f9002281a
+# github.com/jinzhu/copier v0.3.2
 github.com/jinzhu/copier
 # github.com/json-iterator/go v1.1.9
 ## explicit
 github.com/json-iterator/go
-# github.com/juju/errors v0.0.0-20190930114154-d42613fe1ab9
+# github.com/juju/errors v0.0.0-20200330140219-3fe23663418f
 ## explicit
 github.com/juju/errors
-# github.com/juju/loggo v0.0.0-20190526231331-6e530bcce5d8
-## explicit
-# github.com/juju/testing v0.0.0-20191001232224-ce9dec17d28b
-## explicit
-# github.com/klauspost/compress v1.10.4
+# github.com/klauspost/compress v1.13.4
 github.com/klauspost/compress/flate
 github.com/klauspost/compress/gzip
 github.com/klauspost/compress/zlib
@@ -322,7 +318,7 @@ github.com/ugorji/go/codec
 github.com/urfave/cli
 # github.com/valyala/bytebufferpool v1.0.0
 github.com/valyala/bytebufferpool
-# github.com/valyala/fasthttp v0.0.0-20200605121233-ac51d598dc54
+# github.com/valyala/fasthttp v1.31.0
 ## explicit
 github.com/valyala/fasthttp
 github.com/valyala/fasthttp/fasthttputil
@@ -348,7 +344,7 @@ go.uber.org/automaxprocs/internal/runtime
 go.uber.org/automaxprocs/maxprocs
 # go.uber.org/multierr v1.5.0
 go.uber.org/multierr
-# go.uber.org/zap v1.14.1
+# go.uber.org/zap v1.16.0
 go.uber.org/zap
 go.uber.org/zap/buffer
 go.uber.org/zap/internal/bufferpool
@@ -360,20 +356,21 @@ golang.org/x/arch/arm/armasm
 golang.org/x/arch/arm64/arm64asm
 golang.org/x/arch/ppc64/ppc64asm
 golang.org/x/arch/x86/x86asm
-# golang.org/x/crypto v0.0.0-20200221231518-2aa609cf4a9d
+# golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
 ## explicit
 golang.org/x/crypto/chacha20
 golang.org/x/crypto/chacha20poly1305
 golang.org/x/crypto/cryptobyte
 golang.org/x/crypto/cryptobyte/asn1
 golang.org/x/crypto/curve25519
+golang.org/x/crypto/curve25519/internal/field
 golang.org/x/crypto/ed25519
 golang.org/x/crypto/ed25519/internal/edwards25519
 golang.org/x/crypto/hkdf
 golang.org/x/crypto/internal/subtle
 golang.org/x/crypto/poly1305
 golang.org/x/crypto/ssh/terminal
-# golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e
+# golang.org/x/net v0.0.0-20210510120150-4163338589ed
 ## explicit
 golang.org/x/net/bpf
 golang.org/x/net/context
@@ -389,13 +386,16 @@ golang.org/x/net/ipv6
 golang.org/x/net/trace
 # golang.org/x/sync v0.0.0-20190423024810-112230192c58
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.0.0-20201024232916-9f70ab9862d5
+# golang.org/x/sys v0.0.0-20210809222454-d867a43fc93e
 ## explicit
 golang.org/x/sys/cpu
 golang.org/x/sys/internal/unsafeheader
+golang.org/x/sys/plan9
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/text v0.3.2
+# golang.org/x/term v0.0.0-20201126162022-7de9c90e9dd1
+golang.org/x/term
+# golang.org/x/text v0.3.6
 golang.org/x/text/secure/bidirule
 golang.org/x/text/transform
 golang.org/x/text/unicode/bidi
@@ -453,11 +453,48 @@ google.golang.org/grpc/serviceconfig
 google.golang.org/grpc/stats
 google.golang.org/grpc/status
 google.golang.org/grpc/tap
+# google.golang.org/protobuf v1.23.0
+google.golang.org/protobuf/encoding/protojson
+google.golang.org/protobuf/encoding/prototext
+google.golang.org/protobuf/encoding/protowire
+google.golang.org/protobuf/internal/descfmt
+google.golang.org/protobuf/internal/descopts
+google.golang.org/protobuf/internal/detectknown
+google.golang.org/protobuf/internal/detrand
+google.golang.org/protobuf/internal/encoding/defval
+google.golang.org/protobuf/internal/encoding/json
+google.golang.org/protobuf/internal/encoding/messageset
+google.golang.org/protobuf/internal/encoding/tag
+google.golang.org/protobuf/internal/encoding/text
+google.golang.org/protobuf/internal/errors
+google.golang.org/protobuf/internal/fieldnum
+google.golang.org/protobuf/internal/fieldsort
+google.golang.org/protobuf/internal/filedesc
+google.golang.org/protobuf/internal/filetype
+google.golang.org/protobuf/internal/flags
+google.golang.org/protobuf/internal/genname
+google.golang.org/protobuf/internal/impl
+google.golang.org/protobuf/internal/mapsort
+google.golang.org/protobuf/internal/pragma
+google.golang.org/protobuf/internal/set
+google.golang.org/protobuf/internal/strs
+google.golang.org/protobuf/internal/version
+google.golang.org/protobuf/proto
+google.golang.org/protobuf/reflect/protodesc
+google.golang.org/protobuf/reflect/protoreflect
+google.golang.org/protobuf/reflect/protoregistry
+google.golang.org/protobuf/runtime/protoiface
+google.golang.org/protobuf/runtime/protoimpl
+google.golang.org/protobuf/types/descriptorpb
+google.golang.org/protobuf/types/known/anypb
+google.golang.org/protobuf/types/known/durationpb
+google.golang.org/protobuf/types/known/emptypb
+google.golang.org/protobuf/types/known/structpb
+google.golang.org/protobuf/types/known/timestamppb
+google.golang.org/protobuf/types/known/wrapperspb
 # gopkg.in/errgo.v2 v2.1.0
 gopkg.in/errgo.v2/errors
 gopkg.in/errgo.v2/fmt/errors
-# gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
-## explicit
 # gopkg.in/natefinch/lumberjack.v2 v2.0.0
 gopkg.in/natefinch/lumberjack.v2
 # gopkg.in/yaml.v2 v2.4.0
@@ -477,11 +514,12 @@ k8s.io/klog
 # mosn.io/api v0.0.0-20210414070543-8a0686b03540 => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
 ## explicit
 mosn.io/api
-# mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814
+# mosn.io/pkg v0.0.0-20211208031317-7b020e8bcdd4
 ## explicit
 mosn.io/pkg/buffer
 mosn.io/pkg/header
 mosn.io/pkg/log
+mosn.io/pkg/protocol/http
 mosn.io/pkg/utils
 # mosn.io/proxy-wasm-go-host v0.0.0-20210312032409-2334f9cf62ec
 ## explicit
@@ -489,3 +527,4 @@ mosn.io/proxy-wasm-go-host/common
 mosn.io/proxy-wasm-go-host/proxywasm
 # github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
 # mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
+# github.com/dubbogo/gost => github.com/dubbogo/gost v1.9.0

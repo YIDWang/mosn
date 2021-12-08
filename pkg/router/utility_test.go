@@ -23,6 +23,8 @@ import (
 
 	"mosn.io/api"
 	v2 "mosn.io/mosn/pkg/config/v2"
+	"mosn.io/mosn/pkg/log"
+	"mosn.io/mosn/pkg/types"
 )
 
 func Test_getWeightedClusterEntryAndVerify(t *testing.T) {
@@ -227,6 +229,65 @@ func Test_getHeadersToRemove(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := getHeadersToRemove(tt.args.headersToRemove); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("getHeadersToRemove(headersToRemove []string) = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func init() {
+	log.InitDefaultLogger("", log.DEBUG)
+}
+
+func TestParseQueryString(t *testing.T) {
+	type args struct {
+		query string
+	}
+	tests := []struct {
+		name string
+		args args
+		want types.QueryParams
+	}{
+		{
+			args: args{
+				query: "",
+			},
+			want: types.QueryParams{},
+		},
+		{
+			args: args{
+				query: "key1=valuex",
+			},
+			want: types.QueryParams{
+				"key1": "valuex",
+			},
+		},
+
+		{
+			args: args{
+				query: "key1=valuex&nobody=true",
+			},
+			want: types.QueryParams{
+				"key1":   "valuex",
+				"nobody": "true",
+			},
+		},
+
+		{
+			args: args{
+				query: "key1=valuex&nobody=true&test=biz",
+			},
+			want: types.QueryParams{
+				"key1":   "valuex",
+				"nobody": "true",
+				"test":   "biz",
+			},
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ParseQueryString(tt.args.query); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ParseQueryString() = %v, want %v", got, tt.want)
 			}
 		})
 	}

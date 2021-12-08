@@ -18,13 +18,11 @@ require (
 	github.com/go-chi/chi v4.1.0+incompatible
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/mock v1.4.4
-	github.com/golang/protobuf v1.3.5
+	github.com/golang/protobuf v1.4.3
 	github.com/google/cel-go v0.5.1
 	github.com/hashicorp/go-plugin v1.0.1
 	github.com/json-iterator/go v1.1.9
-	github.com/juju/errors v0.0.0-20190930114154-d42613fe1ab9
-	github.com/juju/loggo v0.0.0-20190526231331-6e530bcce5d8 // indirect
-	github.com/juju/testing v0.0.0-20191001232224-ce9dec17d28b // indirect
+	github.com/juju/errors v0.0.0-20200330140219-3fe23663418f
 	github.com/lestrrat/go-jwx v0.0.0-20180221005942-b7d4802280ae
 	github.com/lestrrat/go-pdebug v0.0.0-20180220043741-569c97477ae8 // indirect
 	github.com/lyft/protoc-gen-validate v0.0.14
@@ -40,25 +38,26 @@ require (
 	github.com/tetratelabs/proxy-wasm-go-sdk v0.0.13
 	github.com/trainyao/go-maglev v0.0.0-20200611125015-4c1ae64d96a8
 	github.com/urfave/cli v1.20.0
-	github.com/valyala/fasthttp v0.0.0-20200605121233-ac51d598dc54
+	github.com/valyala/fasthttp v1.31.0
 	github.com/valyala/fasttemplate v1.1.0
 	github.com/wasmerio/wasmer-go v1.0.3
 	go.uber.org/atomic v1.7.0
 	go.uber.org/automaxprocs v1.3.0
-	golang.org/x/crypto v0.0.0-20200221231518-2aa609cf4a9d
-	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e
-	golang.org/x/sys v0.0.0-20201024232916-9f70ab9862d5
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/net v0.0.0-20210510120150-4163338589ed
+	golang.org/x/sys v0.0.0-20210809222454-d867a43fc93e
 	golang.org/x/tools v0.0.0-20191125144606-a911d9008d1f
 	google.golang.org/genproto v0.0.0-20200305110556-506484158171
 	google.golang.org/grpc v1.28.0
-	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 // indirect
 	istio.io/api v0.0.0-20200227213531-891bf31f3c32
 	k8s.io/klog v1.0.0
 	mosn.io/api v0.0.0-20210414070543-8a0686b03540
-	mosn.io/pkg v0.0.0-20210604065522-6e8f5a087814
+	mosn.io/pkg v0.0.0-20211208031317-7b020e8bcdd4
 	mosn.io/proxy-wasm-go-host v0.0.0-20210312032409-2334f9cf62ec
 )
 
 replace github.com/envoyproxy/go-control-plane => github.com/envoyproxy/go-control-plane v0.9.4
 
 replace mosn.io/api => github.com/YIDWang/api v0.0.0-20211119033852-6e898f4d8222
+
+replace github.com/dubbogo/gost => github.com/dubbogo/gost v1.9.0
