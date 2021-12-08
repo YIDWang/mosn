@@ -18,10 +18,37 @@
 package http
 
 import (
+	"strings"
+
+	"mosn.io/mosn/pkg/log"
+	"mosn.io/mosn/pkg/types"
 	pkghttp "mosn.io/pkg/protocol/http"
 )
 
 type (
 	RequestHeader  = pkghttp.RequestHeader
 	ResponseHeader = pkghttp.ResponseHeader
+	Code           = pkghttp.Code
 )
+
+// the query string looks like:  "field1=value1&field2=value2&field3=value3..."
+func ParseQueryString(query string) types.QueryParams {
+	var QueryParams = make(types.QueryParams, 10)
+
+	if "" == query {
+		return QueryParams
+	}
+	queryMaps := strings.Split(query, "&")
+
+	for _, qm := range queryMaps {
+		queryMap := strings.Split(qm, "=")
+
+		if len(queryMap) != 2 {
+			log.DefaultLogger.Errorf("parse query parameters error,parameters = %s", qm)
+		} else {
+			QueryParams[strings.TrimSpace(queryMap[0])] = strings.TrimSpace(queryMap[1])
+		}
+	}
+
+	return QueryParams
+}
