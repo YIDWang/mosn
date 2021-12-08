@@ -25,7 +25,6 @@ import (
 	"mosn.io/api"
 	v2 "mosn.io/mosn/pkg/config/v2"
 	"mosn.io/mosn/pkg/log"
-	httpmosn "mosn.io/mosn/pkg/protocol/http"
 	"mosn.io/mosn/pkg/types"
 	"mosn.io/mosn/pkg/variable"
 )
@@ -63,7 +62,7 @@ func (rri *BaseHTTPRouteRule) matchRoute(ctx context.Context, headers api.Header
 		var queryParams types.QueryParams
 		QueryString, err := variable.GetVariableValue(ctx, types.VarQueryString)
 		if err == nil && QueryString != "" {
-			queryParams = httpmosn.ParseQueryString(QueryString)
+			queryParams = ParseQueryString(QueryString)
 		}
 		if len(queryParams) != 0 {
 			if !rri.configQueryParameters.Matches(ctx, queryParams) {

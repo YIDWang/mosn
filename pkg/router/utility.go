@@ -21,6 +21,8 @@ import (
 	"strings"
 
 	v2 "mosn.io/mosn/pkg/config/v2"
+	"mosn.io/mosn/pkg/log"
+	"mosn.io/mosn/pkg/types"
 )
 
 func getWeightedClusterEntry(weightedClusters []v2.WeightedCluster) (map[string]weightedClusterEntry, uint32) {
@@ -83,4 +85,26 @@ func getHeadersToRemove(headersToRemove []string) []string {
 		lowerCaseHeaders = append(lowerCaseHeaders, lowerCaseHeader)
 	}
 	return lowerCaseHeaders
+}
+
+// the query string looks like:  "field1=value1&field2=value2&field3=value3..."
+func ParseQueryString(query string) types.QueryParams {
+	var QueryParams = make(types.QueryParams, 10)
+
+	if "" == query {
+		return QueryParams
+	}
+	queryMaps := strings.Split(query, "&")
+
+	for _, qm := range queryMaps {
+		queryMap := strings.Split(qm, "=")
+
+		if len(queryMap) != 2 {
+			log.DefaultLogger.Errorf("parse query parameters error,parameters = %s", qm)
+		} else {
+			QueryParams[strings.TrimSpace(queryMap[0])] = strings.TrimSpace(queryMap[1])
+		}
+	}
+
+	return QueryParams
 }
