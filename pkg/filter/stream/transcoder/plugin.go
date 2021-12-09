@@ -19,10 +19,10 @@ package transcoder
 
 import (
 	"encoding/json"
-	"mosn.io/api/extensions/transcoder"
+	goplugin "plugin"
+
 	v2 "mosn.io/mosn/pkg/config/v2"
 	"mosn.io/mosn/pkg/log"
-	goplugin "plugin"
 )
 
 func init() {
@@ -35,17 +35,19 @@ type TranscoderGoPlugin struct {
 	SoPath string `json:"so_path,omitempty"`
 }
 
-func (t *TranscoderGoPlugin) CreateTranscoder() {
+func (t *TranscoderGoPlugin) GetType() string {
+	return t.SrcPro + "_" + t.DstPro
+}
 
+func (t *TranscoderGoPlugin) CreateTranscoder() {
 	if t.SrcPro == "" || t.DstPro == "" || t.SoPath == "" {
 		log.DefaultLogger.Errorf("[stream filter][transcoder] config could not be found, srcPro: %s,"+
 			" dsrPro: %s, soPath: %s", t.SrcPro, t.DstPro, t.SoPath)
 		return
 	}
 
-	name := t.SrcPro + "_" + t.DstPro
-
-	if GetTranscoder(name) != nil {
+	name := t.GetType()
+	if GetTranscoderFactory(name) != nil {
 		return
 	}
 
@@ -55,15 +57,14 @@ func (t *TranscoderGoPlugin) CreateTranscoder() {
 		return
 	}
 
-	sym, err := p.Lookup("LoadTranscoder")
+	sym, err := p.Lookup("LoadTranscoderFactory")
 	if err != nil {
 		log.DefaultLogger.Errorf("[stream filter][transcoder] so file look up error, soPath: %s, err: %v", t.SoPath, err)
 		return
 	}
 
-	loadFunc := sym.(func() transcoder.Transcoder)
+	loadFunc := sym.(func() TranscoderFactory)
 	transcoderSo := loadFunc()
-
 	MustRegister(name, transcoderSo)
 }
 
