@@ -19,7 +19,9 @@ package transcoder
 
 import (
 	"context"
+	"mosn.io/mosn/pkg/protocol"
 	"net/http"
+	"strings"
 
 	"mosn.io/api"
 	"mosn.io/api/extensions/transcoder"
@@ -37,6 +39,7 @@ type transcodeFilter struct {
 
 	transcoder    transcoder.Transcoder
 	needTranscode bool
+	srcProtocol   api.ProtocolName
 
 	receiveHandler api.StreamReceiverFilterHandler
 	sendHandler    api.StreamSenderFilterHandler
@@ -47,9 +50,18 @@ func newTranscodeFilter(ctx context.Context, cfg *config) *transcodeFilter {
 		log.Proxy.Debugf(ctx, "[stream filter][transcoder] create transcoder filter with config: %v", cfg)
 	}
 
+	var srcProtocol api.ProtocolName
+	if listenerName, ok := mosnctx.Get(ctx, types.ContextKeyListenerName).(string); ok {
+		if items := strings.Split(listenerName, "_"); len(items) > 0 {
+			// resolve protocol name, eg: egress_bolt, resoled name bolt.
+			srcProtocol = api.ProtocolName(items[len(items)-1])
+		}
+	}
+
 	return &transcodeFilter{
-		ctx: ctx,
-		cfg: cfg,
+		ctx:         ctx,
+		cfg:         cfg,
+		srcProtocol: srcProtocol,
 	}
 }
 
@@ -78,6 +90,11 @@ func (f *transcodeFilter) OnReceive(ctx context.Context, headers types.HeaderMap
 		return api.StreamFilterContinue
 	}
 	srcPro := mosnctx.Get(ctx, types.ContextKeyDownStreamProtocol).(api.ProtocolName)
+
+	if srcPro == protocol.HTTP1 {
+		srcPro = f.srcProtocol
+	}
+
 	dstPro := ruleInfo.UpstreamSubProtocol
 	//select transcoder
 	transcoderFactory := GetTranscoderFactory(ruleInfo.GetType(srcPro))
